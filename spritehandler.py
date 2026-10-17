@@ -266,9 +266,12 @@ class spriteHandler:
         def sortFunc(file):
             if file in spriteHandler.spritePath:
                 i = spriteHandler.spritePath.index(file)
-                im = Image.open(
-                    spriteHandler.basepath + "/" + spriteHandler.spritePath[i]
-                )
+                import os
+
+                path = os.path.join(spriteHandler.basepath, spriteHandler.spritePath[i])
+                path = os.path.normpath(path)
+                im = Image.open(path)
+
                 im = im.crop(
                     (
                         spriteHandler.spriteXR[i],
